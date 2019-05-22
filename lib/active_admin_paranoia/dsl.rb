@@ -3,7 +3,7 @@ module ActiveAdminParanoia
     def active_admin_paranoia
       controller do
         def find_resource
-          resource_class.to_s.camelize.constantize.with_deleted.where(id: params[:id]).first!
+          scoped_collection.with_deleted.where(id: params[:id]).first!
         end
       end
 
